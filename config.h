@@ -20,13 +20,13 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 
 static const char *fonts[] = { 
     //"Hack Nerd Font:size=14", 
-    "Fira Code:size=14",
-    "Noto Sans Mono CJK JP:size=13",
-    "FontAwesome:size=14",
-    "JoyPixels:pixelsize=14:antialias=true:autohint=true"
+    "Fira Code:size=12",
+    "Noto Sans Mono CJK JP:size=11",
+    "FontAwesome:size=12",
+    "JoyPixels:pixelsize=12:antialias=true:autohint=true"
 };
 
-static char dmenufont[]             = "Hack Nerd Font:size=14";
+static char dmenufont[]             = "Hack Nerd Font:size=12";
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
@@ -63,10 +63,10 @@ static Sp scratchpads[] = {
     "七", "八", "九" 
 }; */
 static const char *tags[] = {
-    " .", " ..", " .", 
-    " ..", "", "", 
+    " .", " ..", " .", 
+    " ..", "", "", 
     "", "", ""
-}; // Other nice-looking symbols: ( ,  ,  ,  ,  ,  ,  )
+}; // Other nice-looking symbols: ( ,  ,  ,  ,  ,  ,  , )
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -153,13 +153,13 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_minus,	spawn,		SHCMD("mpc volume -10") },
 	{ MODKEY,			XK_equal,	spawn,		SHCMD("mpc volume +2") },
 	{ MODKEY|ShiftMask,		XK_equal,	spawn,		SHCMD("mpc volume +10") },
-    { MODKEY,			XK_BackSpace,	spawn,		SHCMD("reboot") },
-    { MODKEY|ShiftMask,		XK_BackSpace,	spawn,		SHCMD("poweroff") },
+    //{ MODKEY,			XK_BackSpace,	spawn,		SHCMD("reboot") },
+    { MODKEY|ShiftMask,		XK_BackSpace,	quit,		{0} },
 
 	{ MODKEY,			XK_Tab,		view,		{0} },
 	/* { MODKEY|ShiftMask,		XK_Tab,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_q,		killclient,	{0} },
-    { MODKEY|ShiftMask,		XK_q,		quit,		{0} },
+    //{ MODKEY|ShiftMask,		XK_q,		quit,		{0} },
 	{ MODKEY,			XK_w,		spawn,		SHCMD("$BROWSER") },
 	{ MODKEY|ShiftMask, XK_w,		spawn,		SHCMD(TERMINAL_UTF8 " -e gtop") },
 	//{ MODKEY|ShiftMask,		XK_w,		togglescratch,	{.ui = 2} },
