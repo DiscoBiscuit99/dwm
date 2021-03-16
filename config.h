@@ -7,7 +7,7 @@
 #define TERMCLASS_UTF8  "Alacritty"
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
@@ -19,14 +19,14 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
 static const char *fonts[] = { 
-    //"Hack Nerd Font:size=14", 
-    "Fira Code:size=12",
-    "Noto Sans Mono CJK JP:size=11",
-    "FontAwesome:size=12",
-    "JoyPixels:pixelsize=12:antialias=true:autohint=true"
+    "Hack Nerd Font:size=15", 
+    "Noto Sans Mono CJK JP:size=15",
+    "FontAwesome:size=13",
+    //"octicons:size=17",
+    "JoyPixels:pixelsize=15:antialias=true:autohint=true"
 };
 
-static char dmenufont[]             = "Hack Nerd Font:size=12";
+static char dmenufont[]             = "Hack Nerd Font:size=15";
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
@@ -79,6 +79,7 @@ static const Rule rules[] = {
 	{ NULL,       NULL,       "Event Tester",   0,            0,           0,         1,        -1 },
 	{ NULL,      "spterm",    NULL,       	    SPTAG(0),     1,           1,         0,        -1 },
 	{ NULL,      "spcalc",    NULL,       	    SPTAG(1),     1,           1,         0,        -1 },
+	{ NULL,       NULL,       "QEMU",           0,            1,           0,         1,        -1 },
 };
 
 /* layout(s) */
@@ -149,9 +150,9 @@ static Key keys[] = {
     TAGKEYS(			XK_9,		8)
     { MODKEY,			XK_0,		view,		{.ui = ~0 } },
     { MODKEY|ShiftMask,		XK_0,		tag,		{.ui = ~0 } },
-	{ MODKEY,			XK_minus,	spawn,		SHCMD("mpc volume -2") },
+	{ MODKEY,			XK_minus,	spawn,		SHCMD("mpc volume -5") },
 	{ MODKEY|ShiftMask,		XK_minus,	spawn,		SHCMD("mpc volume -10") },
-	{ MODKEY,			XK_equal,	spawn,		SHCMD("mpc volume +2") },
+	{ MODKEY,			XK_equal,	spawn,		SHCMD("mpc volume +5") },
 	{ MODKEY|ShiftMask,		XK_equal,	spawn,		SHCMD("mpc volume +10") },
     //{ MODKEY,			XK_BackSpace,	spawn,		SHCMD("reboot") },
     { MODKEY|ShiftMask,		XK_BackSpace,	quit,		{0} },
@@ -166,7 +167,9 @@ static Key keys[] = {
 	//{ MODKEY,			XK_e,		spawn,		SHCMD(TERMINAL " -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") },
 	{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD(TERMINAL " -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
 	{ MODKEY,			XK_r,		spawn,		SHCMD(TERMINAL " -e lf") }, 
-	{ MODKEY|ShiftMask, XK_r,		spawn,		SHCMD(TERMINAL " -e lf /run/media/clara/") }, 
+	{ MODKEY|ShiftMask, XK_r,		spawn,		SHCMD(TERMINAL " -e lf /mnt/") }, 
+	//{ MODKEY|ControlMask, XK_r,		spawn,		SHCMD(TERMINAL_UTF8 " -e lf") }, 
+	//{ MODKEY|ControlMask|ShiftMask, XK_r,		spawn,		SHCMD(TERMINAL_UTF8 " -e lf /mnt/") }, 
 	//{ MODKEY|ShiftMask,		XK_r,		spawn,		SHCMD(TERMINAL_UTF8 " -e gtop") },
 	{ MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,		XK_t,		setlayout,	{.v = &layouts[1]} }, /* bstack */
@@ -288,8 +291,8 @@ static Key keys[] = {
 	{ 0, XF86XK_TouchpadToggle,	spawn,		SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
 	{ 0, XF86XK_TouchpadOff,	spawn,		SHCMD("synclient TouchpadOff=1") },
 	{ 0, XF86XK_TouchpadOn,		spawn,		SHCMD("synclient TouchpadOff=0") },
-	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("light -A 20") },
-	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("light -U 20") },
+	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 10") },
+	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 10") },
 
 	/* { MODKEY|Mod4Mask,              XK_h,      incrgaps,       {.i = +1 } }, */
 	/* { MODKEY|Mod4Mask,              XK_l,      incrgaps,       {.i = -1 } }, */
